@@ -1,0 +1,1040 @@
+\documentclass{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{mathrsfs, dsfont} % специальные шрифты, по типу \mathscr или \dsfont
+\usepackage{comment} %для многострочных комментариев
+\usepackage{xcolor} %для гиперссылок в тексте и их цвета
+\usepackage{hyperref}
+\usepackage[left=3cm,right=3cm,top=2cm,bottom=2cm]{geometry}	
+\author{Коченюк Анатолий}
+\title{Кусок конспекта по матану с 22.11.2017}
+\newtheorem{Def}{Определение}[chapter]
+\newtheorem{Th}{Теорема}[chapter]
+\newtheorem{Lm}{Лемма}[chapter] 
+\newtheorem{Pb}{Задача}[chapter]
+\usepackage{comment}
+
+\begin{document}
+\maketitle
+\section{Точки прикосновения (предельные точки), сгущение и изолированные точки.}
+\begin{Def}
+$x_0 \in \mathds{R}$ называется точкой прикосновения или предельной точкой множества А, если в окрестности точки $x_0$ найдётся хотя бы одна точка из A
+\end{Def}
+$x_0$ -- точка прикосновения $\Longleftrightarrow \forall O(x_0)\quad A\cap O(x_0)\neq \emptyset$
+Примеры:
+\begin{enumerate}
+	\item $x_0\in A \Rightarrow x_0$ -- точка прикосновения\\
+	$A = \{1\}\cup (2, 3)$    $x_0 =1$ -- точка прикосновения, а $x_0 = 4$ -- нет
+	\item $x_0 \in \delta A\delta \Rightarrow x_0$ -- точка прикосновения (по определению $\delta A$)   2, 3 -- точки прикосновения\\
+	$\delta A = \{1, 2, 3\}$f
+\end{enumerate}
+\begin{Def}
+	$x_0 \in \overline{\mathds{R}}$ называется точкой сгущения, если в любой её окрестности есть точки из A, отличные от $x_0$, т.е. для любой проколотой окрестности $O(x)$
+	$$\overset{\circ}{O}(x_0) \cap A \neq \emptyset$$
+\end{Def}
+
+Замечания:
+\begin{enumerate}
+	\item Любая сгущения является точкой прикосновения
+	\item Обратное неверно
+	\item т.к. в $\forall$ проколотой окрестности $x_0 \exists$ точки из $A \Rightarrow \forall$ окрестности $x_0 \exists infinity$ много точек из A\\
+	Пусть $a_m $ -- ближайшая к $x_0 : |x_0-a_m|=min_{k = \overline{1, n}}|x_0-a_k|$ \\
+	Пусть $\varepsilon = \frac{1}{2}|x_0 - a_m|$\\
+	Тогда в $O_{\varepsilon}(x_0)$ уже нет точек из A -- это противоречит определению точки сгущения
+\end{enumerate}
+
+\begin{Def}
+	Множество всех точек сгущения называется производным множеством множества A.\\
+	Обозначение -- $A^{\prime}$
+	
+\end{Def}
+$A = \{1\}\cup (2, 3) \Rightarrow A^{\prime}=[2, 3]$\\
+$A=\mathds{Q}\Rightarrow A^{\prime}=\mathds{R}$
+\begin{Def}
+	$x_0 \in A$ называется изолированной точкой, если $\exists$ проколотая окрестность $\overset{\circ}{O}(x_0)$:\\
+	$$\overset{\circ}{O}(x_0)\cap A \neq \emptyset$$\\
+	т.е в Этой окрестности нет других точек из A
+\end{Def}
+
+$A=\{1\}\cup (2, 3) \Rightarrow x_0 =1$ -- изолированная точка. $x_0 = 4 --$ не изолированная точка, т.к. $x_0 \notin A$
+
+Замечание: Пусть $x_0 \in A$. Тогда $x_0$ -- не иззолированная точка $\Leftrightarrow x_0$ -- точка сгущения, т.е множество изолированных точек $= A\setminus A^{\prime}$\\
+
+Вспомним определение замкнутого множества\\
+\begin{Def}
+	A -- замкнуто $\Leftrightarrow cA$ -- открыто
+\end{Def}
+
+\begin{Th}
+	(об эквивалентных определениях замкнутого множества). Следующие 4 определения эквивалентны\\
+	\begin{enumerate}
+		\item A -- замкнуто
+		\item А включает (содержит) все свои конечные точки прикосновения
+		\item А включает в себя все свои конечные точки сгущения
+		\item А содержит свою границу $\partial A$	
+	\end{enumerate}	 
+\end{Th}
+
+\begin{proof}\
+	\begin{itemize}
+	
+	
+	\item[.]$$1 \Rightarrow 2 \Rightarrow 3 \Rightarrow 4 \Rightarrow 1$$
+	\item[.]$1\Rightarrow 2$: Пусть А -- замкнуто (т.е. cA -- открыто)\\
+	Пусть $x_0$ -- конечная точка прикосновения А $\Rightarrow x_0 \in A$\\
+	От противного:
+	
+	Пусть $x_0 \notin A \Rightarrow x_0 \in cA$ -- открытое множество $\Rightarrow \exists$ окружность $O(x_0) \subset cA \Rightarrow O(x_0)\cap = \emptyset \Rightarrow x_0$ -- не точка прикосновения ??!
+	
+	\item[.]$2\Rightarrow 3$: Пусть А содержит все свои конечные точки прикосновения.
+	
+	Пусть $x_0$ -- конечная точка сгущения, но тогда она и точка прикосновения$\Rightarrow x_0 \in A$ ч.т.п.
+	 
+	\item[.]$3 \Rightarrow 4$ Пусть А включает все конечные точки сгущения $\Rightarrow \partial A \subset A$
+	
+	 Пусть $x_0 \in \partial A$. Если $x_0 \in A$ -- то всё доказано.\\
+	 Иначе, если $x_0 \notin A$, то по определению границы в любой окрестности ($x_0 \in \partial A \Rightarrow $ в любой окружности O($x_0$) есть точки из А и не из А)\\
+	 Есть точки из А, причём, они $\neq x_0$, т.к. $x_0 \notin A \Rightarrow x_0$ -- точка сгущения $\Rightarrow x_0 \in A$ -- противоречие по предположению 
+	 \item[$4 \Rightarrow 1$] Пусть $\partial A \subseteq A$, покажем, что сА -- открыто.
+	 
+	 Пусть $x_0 \in $  сА, т.е. надо показать, что $x_0$ -- внутренняя точка cA. То расположим $x_0$ по отношению к сА. \[x_0 \in \int~cA \vee x_0 \in \partial(cA) \vee x_0 \in ext(cA)\]
+	 Первое нам не подходит. Т.к. $ \partial(cA)=\partial A$ (легко следует из определения)
+	 
+	 $x_0in \partial(cA) = \partial A \overset{\texttt{усл}}{\Rightarrow} x_0 \in A \Rightarrow x_0 \notin cA$ противоречие
+	 
+	 $x_0 \in ext(cA) \Rightarrow x_0 \in A \Rightarrow$ снова такое же противоречие.
+	 
+	  
+	\end{itemize}
+\end{proof}
+
+\section{Три фундаментальных принципа математического Анализа}
+\begin{itemize}
+	\item Теорема (принцип) Кантора
+	\item Теорема Бореля - Лебега
+	\item Теорема Больцано - Вейрштрасса
+\end{itemize}
+\begin{Th}
+Теорема Кантора (повтор, т.к. это было).
+
+Пусть дана последовательность вложенных отрезков
+$$[a_1, b_1] \supseteq [a_2, b_2]\supseteq \ldots \supseteq [a_n, b_n]\supseteq \ldots$$.
+Тогда $$\bigcup_{n=1}^{\infty}[a_n, b_n] \neq \emptyset$$
+
+Более того если $$\delta_n = |b_n-a_n|$$ стремится к 0, т.е. $$\forall \epsilon > 0 \exists N : \forall n > N \delta_n<\epsilon$$, то $$\cap_{n=1}^{\infty}[a_n, b_n]={c}$$ состоит из единственной точки.
+\end{Th}
+
+Пусть есть некоторое множество X и семейство множеств $$X_{\alpha}, \alpha \in A$$ -- множество индексов
+$$X \subset \cup_{\alpha \in A}X_{\alpha}$$, тогда семейство $\{X_{\alpha}\}$ называется покрытием множества X.
+
+Пример:
+
+$X_n = [n, n+1]\quad {X_n}_{n\in \mathds{N}}$ --- покрытие $\mathds{R}$
+
+Пусть в множестве  индексов A $\exists$ подмножество $B\varsubsetneq A$: семейство $\{X_{\alpha}\}_{\alpha in B}$ снова образует покрытие.
+
+Тогда $\{X_{\alpha}\}_{\alpha \in B}$ называется подпокрытием покрытия $\{X_{\alpha}\}_{\alpha \in A}$.
+
+\begin{Th}
+	Бореля - Лебега
+	
+	
+	Из $\forall$ покрытия отрезка открытыми интервалами можно выбрать конечное подпокрытие.
+	
+\end{Th}
+
+\begin{proof}
+	Пусть $[a, b]$ -- некоторый отрезок, и $\{X_{\alpha}\}= (a_{\alpha}, b_{\alpha})$
+	
+	Предположим обратное, т.е.  что из $\{X_{\alpha}\}_{\alpha \in A}$ нельзя выбрать конечное подпокрытие (т.е. $\forall$ конечного $B \subset A\quad \exists x^* \in X:x^* \notin \bigcup_{\alpha \in B}X_{\alpha}$)
+	
+	Разделим $[a, b]$ пополам 
+	$$[a; \dfrac{a+b}{2}] \quad\texttt{и}\quad [\dfrac{a+b}{2};b]$$
+	Тогда не существует конечного подпокрытия хотя бы для одной из половин. Обозначим её за $[a_1, b-1]$ И повторим рассуждение. Разобьём $[a_1, b-1]$ пополам и выберем ту, для которой нет конечного подпокрытия
+	
+	$$[a_1, b_1] \supseteq [a_2, b_2]\supseteq \ldots \supseteq [a_n, b_n]\supseteq \ldots$$
+	со свойствами:
+	\begin{enumerate}
+		\item из покрытия отрезка $[a_n, b_n]$ нельзя выбрать конечное подпокрытие
+		\item $\delta_n = b_n - a_n = \dfrac{b-a}{2^n}\quad \delta \rightarrow 0$
+	\end{enumerate}
+	
+	По теореме Кантора $\exists ! {c}=\bigcap_{n=1}^{\infty}[a_n, b_n]$.
+	
+	Ясно $\exists X_{\alpha \ni c}$, т.е. $c \in (a_{\alpha}, b_{\alpha})$ -- открытое множество $\Rightarrow \exists \epsilon$ -- открытое $O_{\epsilon} \subset (a_{\alpha, b_{\alpha}})$
+	
+	$\delta_n \rightarrow 0 \Rightarrow$ начиная с некоторого N $c \in [a_N, b_N]\subset O_{\epsilon}(c)$
+	
+	$\epsilon > \dfrac{b-a}{2^N}\Rightarrow [a_N, b_N]$ покрывается одним интервалом $(a_{\alpha}, b_{\alpha})$
+	
+	$[a_n, b_n]\subset (a_{\alpha}, b_{\alpha})$
+\end{proof}
+
+\begin{Th}
+	Больцано - Вейрштрасса
+	\begin{Def}
+	Множества, которые замкнуты и конечны называются компактными.
+	\end{Def}
+	
+	Любое бесконечное ограниченное множество имеет хотя бы одну точку сгущения
+\end{Th}
+\begin{proof}
+	Если множество ограничено $\Leftrightarrow$ он целиком включено с некоторым отрезком
+	
+	Пусть A -- множество из условия теоремы
+	
+	x -- точка сгущения A $\Leftrightarrow \forall \overset{\circ}{O}_{\varepsilon}(x)= (x-\varepsilon, x+\varepsilon)\backslash : \overset{\circ}{O}(x) \cap A \neq \emptyset)$
+	
+	От противного: точек сгущения нет $\Rightarrow \forall x \in [a, b]$ не является точкой сгущения.
+	
+	$\forall x \exists \overset{\circ}{O}(x) \cap A \neq \emptyset \Rightarrow O(x)$ максимум сожержит только одну точку из А 
+	
+	Пусть $X_x = \overset{\circ}{O}(x)$ -- открестность из отрицания выше.
+	
+	$[a, b] \subset \bigcup_{x\in [a, b]}$ - покрытие отрезка неограниченным множествами.
+	
+	$x\in O(x)$
+	
+	$\exists x_1, ..., x_n:$
+	
+	$[a, b] \subset \bigcup_{k=1}^nO(x_k)$
+	
+	Каждое $O(x_k)$ содержит не более одной точки из А
+	
+	То бесконечное А содержится в множестве, содержащим лишь конечное число точек А ??!
+\end{proof}
+\section{
+Последовательность, предел последовательности.}
+
+\begin{Def}
+	Последовательностью называется счётный (пронумерованный натуральными числами) набор чисел в $\mathds{R}$
+	
+	Последовательностью называется некая функция $f:\mathds{N}\rightarrow \mathds{R} (n\rightarrow x_n)$
+\end{Def}
+
+Пусть дана последовательность $\{x_n\}_{n\in \mathds{N}}$
+
+Язык  "$\varepsilon - \delta$"
+
+\begin{Def}
+	Число $a\in \mathds{R} $ (а -- конечное число) называется пределом последовательности $\{x_n\}$, если $\forall \varepsilon >0\exists N:\forall n \geqslant N \quad |x_n -a|<\varepsilon$
+\end{Def}
+\begin{proof}
+	Докажем на Языке  "$\varepsilon - \delta$", что а=1 -- предел $x_n$, т.е. $\forall \varepsilon >0 \exists N = N(\varepsilon ):\forall n \geqslant N \quad |x_n -a|= |\dfrac{1}{k}|<\varepsilon$
+	
+	Неформальная часть: хотим, чтобы $\dfrac{1}{n}<\varepsilon\quad n>\dfrac{1}{\varepsilon}\quad n \geqslant \left[ \dfrac{1}{\varepsilon}\right] +1 $
+	
+	$N_{\varepsilon} = \left[ \dfrac{1}{\varepsilon}\right] +1$
+	
+	Покажем, что это  $N_{\varepsilon}$ -- искомое
+	
+	Пусть $n\geqslant N_{\varepsilon} = \left[ \dfrac{1}{\varepsilon}\right] +1$
+	
+	Тогда $|x_n-a|=\dfrac{1}{n} \leqslant \dfrac{1}{N_{\varepsilon}} = \dfrac{1}{\left[ \dfrac{1}{\varepsilon}\right] +1}<\varepsilon$, т.к $\dfrac{1}{\varepsilon}<\left[ \dfrac{1}{\varepsilon}\right] +1$
+	
+	Обозначение: $a = \lim_{n\rightarrow \infty}x_n$
+	
+	Вспомним, что $O_{\varepsilon}(a)=(a-\varepsilon, a+\varepsilon) = {x||x-a|<\varepsilon}$
+	
+	Определим предел на языке окрестностей
+	
+	$\forall \varepsilon$ -- окрестности $O_{\varepsilon}(a)\exists N=N(\varepsilon):\forall n \geqslant N \quad x_n \in O_{\varepsilon}(a)$
+	\begin{Def}
+		отрезок $[a, b]$ --- ''кормушка'' для $\{x_n\}_{n\in \mathds{N}}$, если он содержит $\infty$ много членов последовательности. 
+	\end{Def}
+		
+	\begin{Def}
+		отрезок $[a, b]$ -- ''ловушка'' для $\{x_n\}_{n\in \mathds{N}}$, если вне этого отрезка либо совсем нет членов $x_n$ либо их конечное число.
+	\end{Def}
+\end{proof}
+
+$\forall A \mathds{R} = int(a) \cup \partial A \cup ext(A)$
+
+$x_n = \dfrac{n^2}{2^n}$ по индукции можно построить разность и привести всё к вадратному уравнению, котрое покажет, что начиная с 4-х последовательность монотонно убывает.
+
+любая кормушка является (включается) ловушкой.
+
+$\{x_n^2\}\quad [a, b]$ -- кормушка, но не ловушка
+
+\noindent
+$\dfrac{1}{2} + (-1)^n(\dfrac{1}{2}-\dfrac{1}{n})$
+\newline
+\newline
+a) $1, \dfrac{1}{2}, \dfrac{1}{3} ..., \dfrac{1}{n}	..$
+\newline
+\newline
+б) $1, 2, \dfrac{1}{2}, 1\dfrac{1}{2}, \dfrac{1}{3}, 1\dfrac{1}{3} ... \dfrac{1}{n}, 1\dfrac{1}{n}, \dfrac{1}{n+1}...$
+\newline
+\newline
+в) $1, \dfrac{1}{2}, 3, \dfrac{1}{4}, .. 2n-1, \dfrac{1}{2n}, 2n+1, ...$
+\newline
+\newline
+
+$A = [-\dfrac{1}{2}, \dfrac{1}{2}]$ ловушка, кормушка, кормушка
+
+$B = [-1, 1]$ ловушка, кормушка, кормушка
+
+$C = [-2, 2]$ ловушка, ловушка, кормушка
+
+
+Существует ли такая последовательность, для которой каждый из отрезков $[0, 1]$ и $[2, 3]$ является кормушкой, ловушкой.
+
+$\dfrac{1}{2} + (-1)^n(\dfrac{1}{2}-\dfrac{1}{n})$ -- кормушки
+
+два не пересекающихся множества не могут быть ловушками одновременно
+
+а) $x_n = \dfrac{1}{n^2+1}$
+
+б) $x_n = (-\dfrac{1}{2})^2$
+
+Указать такое N, чтобы при $n > N$ выполнялось, что $|x_n|<0.001$ и $|x_n|<0.000001$
+%дз -- Покажите, что для (a, b) и  [a, +$\infty$] теорема Лебега неверна
+
+%возьмём покрытие, состоящее из одного элемента -- этого самого множества. Понятно, что эти множества будут включены в него.Но %подпокрытия простоне будет, ведь оно не должно совпадать с покрытием, т.е. должно быть меньше самих множеств
+
+\begin{Th}
+	Предел Единственен
+	
+	Пусть последовательность $\{x_n\}_{n=1}^{\infty}$ такова, что $x_n \rightarrow a $ и $x_n \rightarrow b \Rightarrow a = b$ 
+\end{Th}
+
+\begin{proof}
+	От противного. Пусть $$b>a\quad \varepsilon = b-a>0$$ Т.к. $x_n \rightarrow a \Rightarrow \exists N: \forall n > N x_n \in O_{\dfrac{\varepsilon}{2}}(n)$ 
+	
+	С другой стороны $x_n \rightarrow b \Rightarrow \exists N_2:\forall n > N_2 x_n \in O_{\dfrac{\varepsilon}{2}}(n)$
+		
+	но $ O_{\dfrac{\varepsilon}{2}}(a) \bigcap O_{\dfrac{\varepsilon}{2}}(b)= \emptyset ??! $
+
+\end{proof}
+
+\subsection{Предельные точки}
+
+Пусть $\{x_n\}_{n \in \mathds{N}}$ -- последовательность. $x_n: \mathds{N} \overset{x_n}{\rightarrow} \mathds{R}$
+
+Пусть $n_k$ -- последовательность возрастающих натуральных чисел. $n_k: \mathds{N}\rightarrow \mathds{N}\quad n_{k+1} > n_k$
+
+\begin{Def}
+	Композиция
+	
+	$k \rightarrow n_k \rightarrow x_{n_k}$
+	
+	$x_{n_k}: \mathds{N} \overset{n_k}{\rightarrow} \mathds{N} \overset{x_n}{\rightarrow} \mathds{R} $
+	
+	называется подпоследовательностью последовательности $x_n$. Пишем $\{x_{n_k}\}^{\infty}_{k=1}$
+\end{Def}
+
+\begin{Th}
+	Пусть $x_n \rightarrow a$ Тогда $\forall$ подпоследовательности $x_{n_k} \rightarrow a$
+\end{Th}
+\begin{proof}
+	По определению предела.
+	
+	$\forall \varepsilon>0 \exists N = N(\varepsilon): \forall n > N \quad x_n \in O_{\varepsilon}(a)$
+	
+	Т.к. $n_k$ -- взрастающая последовательность натуральных чисел $\Rightarrow n_k \geqslant k$
+	
+	То $\forall k > N \Rightarrow n_k > N \Rightarrow x_{n_k} \in O_{\varepsilon}(a)$
+\end{proof}
+
+\begin{Def}
+	Пусть дана последовательность $\{x_n\}^{\infty}_{n=1}$
+	Тогда $x^*$ называется предельной точкой этой последовательности, если Любая окрестность $x^*$ содержит бесконечное число членов этой последовательности.  
+\end{Def}
+
+Если а -- предел, то а -- предельная точка.
+
+\begin{Th}
+	Пусть $x^*$ -- предельная точка последовательности $\{x_n\}^{\infty}_{n=1}$
+	
+	Тогда существует подпоследовательность $x_{n_k}\rightarrow x^*$
+\end{Th}
+
+\begin{proof}
+	$\varepsilon = \dfrac{1}{m}$ Рассмотрим окрестность $O_{\dfrac{1}{m}}(x^*)$
+	
+	Она содержит бесконечное число членов $x_n$
+	
+	Пусть $m = 1$ $O_1(x^*)$ берём любой его член, который попал в $O_1(x^*)$. Его номер $n_1$
+	
+	Рассмотрим $O_{\dfrac{1}{2}}(x^*) -- \infty $ членов $\Rightarrow$ есть член не равный $x_n$, Пусть его номер $n_2$ -- это второй номер нашей подпоследовательности.
+	
+	Пусть уже построили $n_1, n_2, n_3, ..., n_m: x_{n_m} \in O_{\dfrac{1}{m}}(x^*)$
+	
+	Рассмотрим $O_{\dfrac{1}{m+1}}(x^*)$  и берём тот член последовательности, который отличен от предыдущих, но также $\in O_{\dfrac{1}{m}}(x^*)n_{m+1}$  -- это m+1-ый номер подпоследовательности.
+	
+	В итоге мы определили подпоследовательность  $\{x_{n_m}\}^{\infty}_{m =1}$
+	
+	$x_{n_m\in O_{\dfrac{1}{m } } } (x^*) \Rightarrow |x_{n_m}|<\dfrac{1}{m} \forall n$
+	
+	При $m\rightarrow \infty |x_{n_m}| \rightarrow\dfrac{2n^2+1}{n^2+n+1}-3htarrow 0 \Rightarrow x_{n_m}\rightarrow x^*$
+\end{proof}
+
+
+Задача: Доказать по определению, что $\dfrac{3n^2+1}{n^2+n+1}\rightarrow 3,$ при $n \rightarrow \infty$
+
+\begin{proof}
+	$\forall \varepsilon >0 \exists N: \forall k \geqslant N$ выполнянтся, что $| \dfrac{3n^2+1}{n^2+n+1}-3|<\varepsilon$?
+	
+	$| \dfrac{3n^2+1}{n^2+n+1}-3 | = |\dfrac{3n^2+1-3n^2-3n-3}{n^2+n+1}| = \dfrac{3n+2}{n^2+n+1}<\varepsilon$?
+	
+	$\Leftrightarrow 3n+2 < \varepsilon (n^2+n+1) \Leftrightarrow \varepsilon n^2+(\varepsilon-3)n + \varepsilon-2>0$
+	
+	$n_{1, 2}= \dfrac{3-\varepsilon\pm\sqrt{(3-\varepsilon)^2-4\varepsilon(\varepsilon-2)}}{2\varepsilon}$	
+	
+	$D = (3-\varepsilon)^2-4\varepsilon (\varepsilon-2)$
+	
+	$N(\varepsilon) = 
+	\begin{cases}
+		[n_2]+1, D\geqslant 0\\
+		1, D<0\\
+	\end{cases}
+	$
+	
+	1) $n>n_2\Rightarrow$ выполняется для любого n
+	
+	2) D<0 не выполняется
+	
+\end{proof}
+
+\section{Бесконечно большие последовательности}
+
+До сих пор $x_n \rightarrow a, a \in \mathds{R}$, где а -- конечно\\
+Теперь рассмотрим $a \in \overline{\mathds{R}}= \mathds{R}\cup {\pm \infty}$
+
+\begin{Def}[на $\varepsilon-\delta$]
+	$x_n \rightarrow + \infty \Leftrightarrow \forall \varepsilon >0 \quad \exists N: \forall k \geqslant N\quad  x_n > \varepsilon$
+\end{Def}
+
+\begin{Def}[на языке окрестностей]
+	$x_n \rightarrow a \Leftrightarrow \forall \varepsilon >0 \quad \exists N : \forall n\geqslant N x_n \in O_{\varepsilon}(x) = (a-\varepsilon, a+\varepsilon)$
+	
+	$x_n \rightarrow + \infty \Leftrightarrow \forall \varepsilon >0 \quad \exists N:~\forall n \geqslant N x_n \in O_{\varepsilon}(+\infty)$
+	
+	Эта запись совпадает с записью для конечнго предела. Аналогично для $-\infty$	
+\end{Def}
+\begin{Def}
+	$x_n \rightarrow \infty \Leftrightarrow \forall \varepsilon >0 \exists N: \forall n \geqslant N\quad x_n < -\varepsilon$
+\end{Def}
+
+\begin{Def}
+	$x_n \rightarrow \infty \Leftrightarrow \forall \varepsilon >0 \exists N: \forall n \geqslant N\quad x_n \in O_{\varepsilon}(-\infty)\overset{def}{=}(-\infty, -\varepsilon)$
+\end{Def}
+
+\begin{Def}[Универсальное определение предела]
+	$x_n \rightarrow a$, где $a \in \overline{\mathds{R}}\Leftrightarrow \forall \varepsilon >0 ~ \exists N = N(\varepsilon): \forall n \geqslant N \quad x_n \in O_{\varepsilon}(n)$
+\end{Def}
+
+Существует разница в словоупотреблении "Последовательность имеет предел" и "Последовательность сходится"
+
+Последовательность сходится = Последовательность имеет \underline{конечный} предел
+
+Т.о $x_n = n \rightarrow + \infty$ эта последовательность имеет предел, но расходится
+
+Расходимость = предел не существует или равен $\pm \infty$
+
+\begin{Th}[Больцано-Вейрштрасса (другая формулировка принципа)]
+	Из любой ограниченной последовательности $x_n$ можно выбрать сходящуюся подпоследовательность 
+\end{Th}
+
+\begin{proof}
+	Пусть  $x_n = f(n)$, f(n):$\mathds{N}\rightarrow \mathds{R}$
+	
+	Рассмотрим образ $f(\mathds{N})$
+	
+	$f(\mathds{N})\subset [inf\{x_1 \hdots x_n \hdots\}, sup\{x_1 \hdots x_n \hdots\}]$ ,они существуют, т.к последовательность ограничена.
+	
+	Случай 1) $f(\mathds{N})$ -- конечно
+	
+	Случай 2) $f(\mathds{N})$ -- бесконечно
+	
+	Случай 1) Если $f(\mathds{N})$ -- конечно, то $\exists \infty$ число членов последовательности и конечное число возможных значений для них $\Rightarrow$ какое-то значение (например а) будет приниматься $\infty$ число раз
+	
+	Т.е $\exists n_1, n_2 \hdots n_k \hdots: x_{n_k} = a \forall k = 1, 2\hdots$
+	
+	Тогда $x_{n_k}$ и есть искомая подпоследовательность
+	0
+	Случай 2) 
+	По приницпу Больцано-Вейрштрасса любое ограниченное бесконечное множетсво имеет хотя бы одну точку сгущения.
+	
+	Пусть а -- точка сгущения для множества $f(\mathds{N})$
+	
+	По определению: $\forall \varepsilon >0~~ \exists x \in f(\mathds{N}):~x \in \overset{.}{O}_{\varepsilon}(a)$
+	
+	Будем брать $\varepsilon = \dfrac{1}{k}$
+	
+	$\forall k \in \mathds{N}~~ \exists x \in f(\mathds{N})={x_1, x_2 \hdots}$, что сие значит?
+	
+	это значит, что $x = x_{n_k}\quad n_k$ -- номер члена последовательности, которому равен x 
+	
+	Т.е. $0<|x_{n_k}-a|<\dfrac{1}{k}$
+	
+	Т.е. мы нашли искомую подпоследовательности.
+\end{proof}
+
+Замечание(для неограниченных последовательностей):
+
+Из любой последовательности можно выбрать подполедовательность, имеющюю предел (иметь предел $\neq$ сходиться)
+
+\begin{proof}
+	Если последовательность  ограничена, то это следует из теоремы Больцано-Верштрасса
+	
+	А если последовательность $\{x_n\}$ неограничена $\Rightarrow$ она неограничена либо сверху либо снизу. Не умаляя общности считаем, что $\{x_n\}$ неограничена сверху
+	
+	$\forall M>0 \exists n = n(M)\in \mathds{N}: x_n >M$
+	
+	Будем брать в качестве М натуральные числа М=k, где $k = 1, 2, 3 \hdots$
+	
+	Тогда $\forall k \exists n_k: x_{n_k}>k$
+	
+	Т.о. $x_{n_k} \rightarrow \infty \Rightarrow$
+	
+	Мы нашли подпоследовательность $x_{n_k}:$ у неё есть $\infty$ предел
+\end{proof}
+
+\begin{Lm}
+ Если последовательность $\{x_n\}$ не имеет наибольшего члена, то из неё можно выделить строго монотонную возрастающюю последовательность 
+ 
+ $x_{n_1}<x_{n_2}<\hdots<x_{n_k}<x_{n_{k+1}}<\hdots$
+\end{Lm}
+
+\begin{Th}[Теорема о монотонной подпоследовательности]
+Из любой последовательности $\{x_n\}$ можно выбрать монотонную подпоследовательность\\
+
+$$x_{n_1}\leqslant x_{n_2}\leqslant \hdots\leqslant x_{n_k}\leqslant x_{n_{k+1}}\leqslant \hdots$$
+\begin{center}
+или
+\end{center}
+$$x_{n_1}\geqslant x_{n_2}\geqslant \hdots\geqslant x_{n_k}\geqslant x_{n_{k+1}}\geqslant \hdots$$
+\end{Th}
+
+\begin{Th}[Больцано-Вейрштрасса 2]
+Монотонные и ограниченные последовательности сходятся
+\end{Th}
+
+\begin{proof}
+Не умаляя общности считаем, что ограниченная послеодватеьельность $x_n$ возрастает
+
+$$x_{n_1}\leqslant x_{n_2}\leqslant \hdots\leqslant x_{n_k}\leqslant x_{n_{k+1}}\leqslant \hdots$$
+
+Рассмотрим $\sup\{x_1, x_2 \hdots x_n \hdots\} = \in \mathds{R}$
+
+a -- конечное число, т.к. последовательность ограничена
+
+Покажем, что $\lim_{n\rightarrow \infty} x_n = a$ -- искомый предел
+
+$\forall \varepsilon >0 \exists N = N(\varepsilon): n \geqslant N ~ |x_n-a|\leqslant \varepsilon$
+
+Т.к. $x_n \uparrow \Rightarrow a \geqslant x_n \quad \forall n ~|x_n-a| = |a - x_n|$
+
+Берём $\forall \varepsilon >0$ по теореме о sup а - $\varepsilon$ -- уже не будет верхней гранью, т.е. $\exists N = N(\varepsilon): x_N > a - \varepsilon \Leftrightarrow 0 \leqslant a-x_N<\varepsilon$
+
+Т.к. $x_n \uparrow \Rightarrow \forall n \geqslant N x_N\leqslant x_n\leqslant a$
+
+Из этого следует, что $0\leqslant a - x_n \leqslant a - x_N < \varepsilon$
+
+И всё доказано
+\end{proof} 
+
+
+\section*{О предельных переходах в неравенствах}
+
+\begin{Th}
+	Пусть дана сходящиеся последовательности $\{x_n\}$ и $\{y_n\}$ и $\forall n ~x_n \leqslant y_n \Rightarrow lim_{n \rightarrow \infty}x_n \leqslant lim_{n \rightarrow \infty} y_n$
+	
+	Замечание:
+	Даже если $x_n < y_n$ всё равно нужно писать $lim_{n \rightarrow \infty}x_n \leqslant lim_{n \rightarrow \infty} y_n$
+	
+	При $x_n = -\dfrac{1}{n}< y_n = \dfrac{1}{n}\quad lim x_n = lim y_n = 0$	 
+\end{Th}
+
+\begin{proof}
+	Пусть $a = lim \{x_n\}, b = \{lim y_n\}$
+	От противного: Пусть а > b 
+	
+	$\varepsilon = a - b >0$
+	
+	По поределению предела:
+	
+	$\exists N_1 : \forall n \geqslant N_1 x_n \in O_{\frac{\varepsilon}{2}}(a)$
+	
+	$\exists N_2 : \forall n \geqslant N_2 y_n \in O_{\frac{\varepsilon}{2}}(b)$
+	
+	$N = max{N_1, N_2} \forall n \geqslant N y_n\leqslant b + \dfrac{\varepsilon}{2} = a-\dfrac{\varepsilon}{2}<x_n$
+	
+	Т.е. $y_n < x_n$, что невозможно	
+\end{proof}
+
+
+\begin{Th}[О двух милиционерах]
+Пусть  даны 3 последовательности $\{x_n\}, \{y_n\}, \{z_n\} : x_n\leqslant y_n \leqslant z_n \forall n$
+
+Пусть существует $lim \{x_n\} = lim \{z_n\} = a$
+
+Тогда существует $lim\{y_n\} = a$
+
+\end{Th}
+
+\begin{Def}
+	$\alpha_n$ -- бесконечно малая последовательность, если $\alpha_n \to 0\quad n\to +\infty$
+\end{Def}
+
+\begin{Th}[Об арифметических действиях над б.м.п.]
+.\\
+	\begin{enumerate}
+		\item если $\alpha_n$ -- б.м.п. $\Rightarrow \forall c \in \mathds{R}\quad c\cdot\alpha_n$ -- б.м.п.
+		\item если $\alpha_n, \beta_n$ -- б.м.п $\Rightarrow \alpha_n \pm\beta_n$ -- б.м.п
+		\item если $\alpha_n$ -- б.м.п, $\beta_n$ -- ограничено $\Rightarrow \alpha_n\cdot\beta_n$ -- б.м.п
+		\item если $\alpha_n $ -- б.м.п. $\Rightarrow \frac{1}{|\alpha_n|}$ -- б.б.п $\to \infty$
+		\item если $\beta_n: \beta_n \neq 0$ -- б.б.п. $\Rightarrow \frac{1}{\beta_n}$ -- б.м.п
+	\end{enumerate} 
+\end{Th}
+
+\begin{proof}
+	$\alpha_n$ -- б.м.п. $\Longleftarrow \forall \varepsilon >0 \exists N: \forall n \geqslant N\quad |\alpha_n|<\varepsilon$
+	
+	\begin{enumerate}
+		\item Берём $\varepsilon >0$ и выбираем $N: \forall n \geqslant	N ~~ |\alpha_n|<\frac{\varepsilon}{|c|}$
+		
+		Тогда $\forall n \geqslant N \quad \forall n \geqslant N ~~ |c\cdot \alpha_n|<\varepsilon$ ч.т.д.
+		\item $\alpha_n \pm \beta_n \to 0$
+		
+		Берём $\varepsilon > 0$ 
+		
+		и выбираем $N_1: \forall n \geqslant N_1~~|\alpha_n|<\frac{\varepsilon}{2}$
+		
+		и выбираем $N_2: \forall n \geqslant N_2~~|\beta_n|<\frac{\varepsilon}{2}$
+		
+		Пусть $N = max\{N_1, N_2\}$
+		
+		Тогда $\forall n \geqslant N$
+		
+		$$|\alpha_n\pm \beta_n|\leqslant |\alpha_n|+|\beta_n|<\frac{\varepsilon}{2}+\frac{\varepsilon}{2}=\varepsilon$$ ч.т.д.
+		\item Т.к. $\beta_n$ -- ограничена $\Rightarrow \exists M:\forall n:|beta_n|\leqslant M$
+		
+		Берём $\varepsilon >0$, т.к. $\alpha_n \to 0$, то $\exists N = N(\frac{\varepsilon}{M}): \forall n \geqslant N |\alpha_n|<\frac{\varepsilon}{M}$
+		
+		Тогда $\forall n \geqslant N |\alpha_n\cdot \beta_n|<\frac{\varepsilon}{M} \cdot M = \varepsilon$ ч.т.д.
+		\item $\frac{1}{\alpha_n}\to +\infty \Longleftarrow \forall M \exists N = N(M): \forall n \geqslant N\quad \frac{1}{\alpha_n}>M$
+		
+		Т.к. $\alpha_n \to 0$, то для $\varepsilon = \frac{1}{M} \exists N:\forall n \geqslant N |\alpha_n|<\varepsilon = \frac{1}{n} \Rightarrow \frac{1}{|\alpha_n|>M}$ ч.т.д.
+		\item Очевидно
+	\end{enumerate}
+\end{proof}
+
+\begin{Th}[о представлениии сходящихся последовательностей]
+	Пусть $\{x_n\}$ -- сходящяяся последовательность, т.е. $\lim_{n+\infty}(x_n) = a < + \infty$
+	
+	Тогда $\exists$ такая б.м.п. $\alpha_n:x_n = a + \alpha_n$
+\end{Th}
+
+\begin{proof}
+	Рассмотрим $\alpha_n = x_n -a$ Надо показать, что $\alpha_n$ -- б.м.п.
+	
+	Мнгновенно следует по определению
+	
+	$\forall \varepsilon > 0 \exists N = N(\varepsilon): \forall n \geqslant N |x_n-a|<\varepsilon \Longleftarrow |\alpha_n<\varepsilon|$ ч.т.д.
+\end{proof}
+
+\begin{Th}[Об арифметических действиях над сходящимися последовательностями]
+Пусть $x_n \to a, y_n \to b\quad a, b$ -- конечные
+
+\begin{enumerate}
+	\item Тогда $\exists \lim_{n\to + \infty}(c_1x_n + c_2y_n = c_1a+c_2b\quad \forall c_{1, 2}$
+	\item Тогда $\exists \lim_{n\to + \infty} x_n \cdot y_n = a \cdot b$
+	\item Если $b \neq 0$, то $\exists \lim_{n \to + \infty} \frac{x_n}{y_n} = \frac{a}{b} \quad (y_n \neq 0?)$
+\end{enumerate}	
+
+\end{Th}
+
+\begin{proof}
+	По предположению теормы $x_n = a + \alpha_n, y_n = b + \beta_n$
+	\begin{enumerate}
+		\item $с_1x_n + c_2y_n = c_1 a + c_2 b +(c_1\alpha_n+c_2y_n) \Rightarrow c_1x_n + c_2y_n \to c_1a+c_2b$
+		
+		$(c_1\alpha_n+c_2y_n)$ -- б.м.п.
+		\item $x_ny_n=(a+\alpha_n)(b + \beta_n) = ab + (a\beta_n + b \alpha_n+\alpha_n\beta_n)$
+		
+		$a\beta_n \to 0$
+		
+		$b \alpha_n \to 0$
+		
+		$\alpha_n\beta_n \to 0$  
+		
+		$\Rightarrow x_ny_n \to ab$
+		\item $\frac{x_n}{y_n} = \frac{a+\alpha_n}{b + \beta_n} = \frac{a}{b} + \frac{\alpha_nb-\beta_na}{\beta(\beta_n)}$
+		
+		Числитель -- б.м.п.
+
+		Знаменатель -- ограниченная последовательность
+
+		Дробь -- б.м.п.
+		
+		$\frac{x_n}{y_n} \to \frac{a}{b}$	
+	\end{enumerate}
+\end{proof}
+	
+\begin{comment}
+$\lim_{n\to \infty}\dfrac{P_m(n)}{O_e(n)} = lim_{n\to \infty}\dfrac{a_mn^m+a_{m-1}n^{m-1}+\hdots+a_0}{b_ln^l+b_{l-1}n^{l-1}+\hdots+b_0}=$
+
+$
+\begin{cases}
+	m>l, ~sign(\frac{a_m}{b_l})*\infty\\
+	m=l, \frac{a_m}{b_l}\\
+	m<l, 0
+\end{cases}
+$
+\end{comment}
+
+\begin{Pb}[57]
+	$\lim_{n\to \infty} \frac{n}{2^n}=0$ (т.е. $2^n$ растёт быстрее, чем $n$)
+\end{Pb}
+
+$\prec$ -- растёт медленнее
+
+
+Есть последовательность $\{x_n\}$,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+нужно выбрать монотонную подпоследовательность (возрастающую или убывающую)
+
+Может быть два случая:
+\begin{enumerate}
+	\item изначальная -- сходящяяся, тогда исходя из теоремы Больцано  Вейрштрасса можно выбрать сходящуюся подпоследовательность 
+	
+	$\lim {x_n}=a (n \to +\infty)\quad \forall \varepsilon >0 \exists N(\varepsilon):\forall n \geqslant N ~|x_n-a|<\varepsilon$
+	
+	$\begin{cases}
+	x_{n_k} \to a\\
+	x_{n_k} < a
+	\end{cases} $
+	\item Не ограничена сверху. Тогда $\forall b \in \mathds{R} \exists x_j\geqslant b$
+	
+	$x_1<x_2<\hdots$
+\end{enumerate}
+
+Полезное неравенство
+
+Неравенство Бернули
+
+$(1+x^n)\geqslant 1 + nx \forall x >-1$
+
+$\lim_{n\to+\infty}\dfrac{a^n}{1+a^n} = L$
+\begin{enumerate}
+	\item $a=0\quad L=0$
+	\item $a = 1\quad L = \frac{1}{2}$
+	\item $a>1 \Rightarrow a = 1 +\varepsilon > 0\quad a^n = (1+\varepsilon)^n\geqslant(1+\varepsilon n) \to +\infty$
+\end{enumerate}
+
+
+\begin{Th}
+	$x_n = (a + \frac{1}{n})^n$ имеет предел
+	
+	$\lim_{n\to +\infty}x_n = e$	
+	
+	$e = 2.18281828459045$
+\end{Th}
+
+\begin{proof}
+	$\sphericalangle y_n = (1+\frac{1}{n})^(n+1)$ Покажем, что она убывающая и ограничена сверху. Ограничена снизу очевидно $y_n\geqslant1$
+	
+	Монотонность? $y_n<y_{n-1}$
+	
+	$y_{n-1}>y_n \Longleftrightarrow (1+\frac{1}{n-1})^n>(1+\frac{1}{n}^{n+1})\Longleftrightarrow (\dfrac{n}{n-1})^n>(\dfrac{n+1}{n}))^{n+1}\Longleftrightarrow (\dfrac{n}{n-1})^n(\dfrac{n+1}{n})^{n+1} \Longleftrightarrow (1+\frac{1}{n^2-1})^n(\frac{n}{n+1})>1 \Longleftrightarrow (1+\frac{1}{n^2-1})^n>\frac{n+1}{n}=1+\frac{1}{n}$ (*)
+	
+	Неравенство Бернули
+	
+	$(1+\frac{1}{n^2-1})^n\geqslant1+\frac{n}{n^2-1}>1+\frac{n}{n^2}=1+\frac{1}{n}$	(*)
+	
+	То $y_n\downarrow$ и ограничено снизу $\Rightarrow \exists \lim y_n$
+	
+	Пусть $\varphi = \lim_n y_n$
+	
+	$y_n = x_n*(1+\frac{1}{n}) \to e$
+	
+	$x_n = \dfrac{y_n}{1+\frac{1}{n}} \to e$
+	
+	То $\exists \lim x_n = e$
+\end{proof}
+
+\section*{Иерархия об бесконечно больших последовательностей}
+
+$\log_{\frac{1}{a}}(x) = - \log_{a}x$
+
+$(\log_a n )^m\prec n^p \prec a^n \prec n! \prec n^n$
+
+m -- фиксированное число$\in \mathds{N}$.
+
+p -- фиксированное число$\in \mathds{N}$.
+	
+$lim_{n\to \infty}\dfrac{n!2^n-(n+1)!}{(n+1)!3^n-n^2} = \lim_{n\to\infty}\dfrac{\frac{1}{n+1}*\frac{2}{3}^n - \frac{1}{3}^n}{1-\frac{n^2}{(n+1)! * 3^n}} = \frac{0}{1} = 0$
+
+\begin{Th}
+	Пусть $|\frac{x_{n+1}}{x_n}| \to a<1 \Rightarrow \lim_{n} \to\infty x_n = 0$
+	
+	II) Покажем $\lim_{n\to \infty}\dfrac{n^p}{a^n} = 0\quad p \in \mathds{N}, a>1$
+	
+	Пусть $x_n = \frac{n^p}{a^n}$
+	
+	$\dfrac{x_{n+1}}{x_n} = \dfrac{(n+1)^p}{a^{n+1}} * \dfrac{a^n}{n^p} = \dfrac{(n+1)^p}{n^p} * \dfrac{1}{a} \to \dfrac{1}{a}<1$
+	
+	По теореме: $\lim_{n\to \infty}\dfrac{n^p}{a^n} = 0$
+	
+	То $\exists \lim x_n = e$
+\end{Th}
+
+\begin{Th}
+	$y_n = \dfrac{(log_an)^m}{n^p} \to 0$
+	
+	Пусть $x_n = log_an\to +\infty\quad n = a^{x_n}$
+	
+	$lim_{n\to +\infty}y_n = lim_{n\to +\infty}\dfrac{(log_an)^m}{n^p} = lim_{n\to \infty} \dfrac{x_n^m}{(a^{x_n})^p}=lim_{n\to\infty}\dfrac{x_n^m}{b^x_n}$
+	
+	$a^p = b$
+	
+	$ \dfrac{n^m}{b^n}\to 0$
+	
+	$\forall k \in \mathds{N} \exists N = N(k) \forall n \geqslant N x_n = log_an > k$
+	
+	$\dfrac{k^m}{b^{k+1}}<\dfrac{x_n^m}{b^{x_n}}<\dfrac{(k+1)^m}{b^k}$ оно всё стремиться к 0 при $k\to \infty$
+\end{Th}
+
+$\overset{x_1}{\sqrt{2}}, \overset{x_2}{\sqrt{2\sqrt{2}}}, \overset{x_3}{\sqrt{2\sqrt{2\sqrt{2}}}} \hdots$
+
+Покажем, что предел сущестует. $x_n$ ограничена сверху?
+
+$x_n\leqslant 3$
+
+Мат индукция
+
+$n = 1 \quad \sqrt{2}\leqslant3$
+
+$n\to n+1\quad $ Пусть $x_n\leqslant 3\quad x_{n+1}=\sqrt{2x_n}\leqslant\sqrt{6}\leqslant 3$ чтд
+
+$\lim\limits_{n\to \infty}\dfrac{\sqrt{ln~n+n^22^n}- \sqrt{4^n+n^4}}{2^n\sqrt{cos^2n+n^3ln~n}-n} = \lim\limits_{n\to \infty}\dfrac{\sqrt{\frac{ln~n}{4^n}+\frac{n^2}{2^n}}-\sqrt{1+\frac{n^4}{4^n}}}{\sqrt{cos^2n+n^2ln~n}-\frac{n}{2^n}}=\dfrac{-1}{\infty} = 0$
+
+самый быcтрорастущий член -- $2^n$. Поделим на него всё
+
+
+Поделим на 5
+
+$\lim\limits_{n\to \infty}\dfrac{\sqrt[n]{n3^n+2*5^n}-2}{\sqrt[n]{2n^2+n}+1}=\lim\limits_{n\to \infty}\dfrac{\sqrt[n]{\frac{n3^n}{5^n}+2}-\frac{2}{5}}{\sqrt[n]{\frac{2n^2}{5^n}+\frac{n}{5^n}}+\frac{1}{5}}= \dfrac{1-\frac{2}{5}}{0+\frac{1}{5}}=3$
+
+
+
+$x_{n+1}=\dfrac{2+x_n}{6+x_n}, x_1 = 2015$
+
+$n\geqslant 2\quad -<x_n<1 \Rightarrow \{x_n\}^{\infty}_{n=1} -- ограничена$
+
+Монотонность?
+
+\underline{База} $x_1>x_2$ ясно $2015 > \frac{2017}{2021}$
+
+$n\to n+1$ 
+
+Пусть $x_{n-1}>x_n$, то есть $x_n-x_{n-1}<0$
+
+Рассмотрим $x_{n+1}-x_n = \frac{2+x_n}{6+x_n}-\dfrac{2+x_{n-1}}{6+x_{n-1}} = \dfrac{(2+x_n)(6+x_{n-1})-(2+x_{n-1})(6+x_n)}{(6+x_n)(6+x_{n-1})} = \frac{12+6x_n+2x_{n-1}+x_nx_{n-1}-12-6x_{n-1}-2x_n-x_{n-1}x_n}{()>0, ()>0}=\dfrac{4(x_n-x_{n-1})}{()()}<0$ по индукционному предположению
+
+Тогда $x_{n+1}-x_n<0$
+
+$x_n\downarrow$ По теореме Больцано-Вейршрасса $\exists a = \lim\limits_{n\to infty}x_n$
+
+$
+\begin{cases}
+	x_{n+1}=\dfrac{2+x_n}{6+x_n}\\
+	x_n\to a
+\end{cases}
+\Rightarrow a = \dfrac{2+a}{6+a}$
+
+$6a+a^2=2+a$
+
+$a^2+5a-2 = 0$
+
+$a_{1, 2}=\dfrac{-5\pm \sqrt{33}}{2}$
+////
+
+$f(x)=\dfrac{2+x}{6+x}$
+
+$x_{n+1}=f(x_n)=f^2(x_{n-1} = \hdots = f^n(x_1))$
+
+$x_{n+1}=f(x_n)$ и  пусть $x_n\to a  \Rightarrow f(a)=a$
+
+$f(x)=x\Longleftarrow
+\begin{cases}
+y=f(x)\\
+y=x
+\end{cases}
+$
+
+Диаграма Ламерея
+
+
+$\lim\limits_{n\to \infty}(a+\frac{1}{n})^n=e=\lim\limits_{n\to \infty}(\dfrac{n+1}{n})$
+
+$\lim\limits_{n\to \infty}(\dfrac{n+3}{n-2})^{2n+1}=\lim\limits_{n\to \infty}(1+\dfrac{5}{n-2})^{2n+1}=
+\lim\limits_{n\to \infty}((1+\dfrac{1}{\frac{n-2}{5}})^{\frac{n-2}{5}})^{\frac{5}{n-2}*(2n+1)}$
+
+выражение в скобках стремится к $е$, а степень к $10$
+
+Последовательность стремится к $e^{10}$
+
+$x_n = \frac{1}{2}(x_n+\frac{2}{x_n}), x_1=2$
+
+Пусть мы занем, что она ограничена и монотонно убывает. Чемц равен предел
+
+Пусть $x_n\to a$
+
+$a = \frac{1}{2}(a+\frac{2}{a})$
+
+$a^2 = 2$
+
+Поскольку $a>0$, то $a = \sqrt{2}$
+
+\begin{Lm}
+	$x_n\downarrow$ и ограничена снизу:
+	
+	Есть тупая оценка снизу $x_n>0$
+	
+	$x\frac{1}{2}(x_n+\frac{2}{x_n})\geqslant \sqrt{x_n\frac{2}{x_n}}=\sqrt{2}$
+	
+	$x_n\downarrow$
+	
+	Рассмотрим $x_n-x_{n+1}=x_n-\frac{1}{2}(x_n+\frac{2}{x_n})=\frac{x_n}{2}-\frac{1}{x_n}= \dfrac{x_n^2-2}{2x_n}>0\Rightarrow x_{n+1}<x_n\Rightarrow x_n\downarrow$
+\end{Lm}
+
+$x_{n+1}=\frac{1}{2}(x_n+\frac{a}{x_n}), x_1=2, a>0$ ограничено и монотонно убывает. стремиться к корню из а
+
+О скорости сходимости $x_n$ к 2:
+
+Пусть $z_n = x_n^2-2$
+
+$z_1=4-2=2$
+
+$z_{n+1}=x_{n+1}^2-2=\frac{1}{4}(x_n+\frac{2}{x_n})^2-2=\frac{1}{4}(x_n^2+4+\frac{4}{x_n^2}-8)=\frac{1}{4}(x_n^2-4+\frac{4}{x_n^2})=\frac{1}{4}(x_n-\frac{2}{x_n})^2=\frac{1}{4x_n^2}(x_n^2-2)^2\leqslant\frac{z_n}{8}$
+
+$z_{n+1}\leqslant\frac{z_n^2}{8}$
+
+супер сходимость
+
+
+$sin(x \pm y)= sin~x~cos~y \pm cos~c~sin~y$
+
+$\forall x, y \quad \exists u, v:
+\begin{cases}
+x=u+v\\
+y=u+v
+\end{cases}
+$
+$
+\begin{cases}
+u = \dfrac{x+y}{2}\\
+v = \dfrac{x-y}{2}
+\end{cases}$
+
+$|sin~x-sin~y|=|sin(u+v)-sin(u-v)|=2|cos~u||sin~v|\leqslant 2\cdot 1 |sin\dfrac{x-y}{2}|$
+
+$sin~w \leqslant w$
+
+\begin{Th}
+$y_n\to \infty, $ начиная с некоторого номера выполняется, что $y_{n+1}>y_n$
+
+Пусть $\exists \lim\limits_{n\to \infty}\dfrac{x_n-x_{n-1}}{y_n-y_n-1}$
+
+Тогда $\lim\limits_{n\to +\infty}\dfrac{x_n}{y_n} = \lim\limits_{n\to \infty}\dfrac{x_n-x_{n-1}}{y_n-y_{n-1}}$ 
+\end{Th}
+
+\begin{Th}
+Пусть $x_n\to a<+\infty\Rightarrow \dfrac{x_1+\hdots+x_n}{n}\to a$
+\end{Th}
+\begin{proof}
+Рассмотрим $x'_n=x_1+\hdots+x_n, y_n = n$
+
+$\lim\limits_{n\to \infty}\dfrac{x_n'-x_{n-1}'}{y_n-y_{n-1}}=\lim\limits_{n\to \infty}\dfrac{x_n}{1}=a\Rightarrow \lim\limits_{n\to\infty}\dfrac{x_n'}{y}=\dfrac{x_1+\hdots+x_n}{n}$
+\end{proof}
+
+Дз:
+\begin{enumerate}
+	\item $\lim\limits_{n\to \infty}\dfrac{1+\sqrt{2}+\sqrt[3]{3}+\hdots+\sqrt[n]{n}}{n}=1$
+	\item $\lim\limits \dfrac{1^k+2^k+3^k+\hdots+n^k}{n^{k+1}}=\dfrac{1}{k+1}$
+	\item Пользуясь теоремой о сущществовании предела у монотонных оганиченных последователь доказать существование предела:
+	\begin{itemize}
+		\item $x_n = 1+\dfrac{1}{2^2}+\dfrac{1}{3^2}+\hdots+\dfrac{1}{n^2}$
+		\item $x_n = \dfrac{1}{n+1}+\dfrac{1}{n+2}+\hdots+\dfrac{1}{2n}$
+	\end{itemize}
+\end{enumerate}
+
+\begin{Th}[Штольца]
+	$\lim\limits_{n\to \infty}\dfrac{x_n}{y_n}$
+	
+	Если :
+	\begin{enumerate}
+		\item Пусть $e_n \to +\infty$ и $y_{n+1}>y_n$
+		\item $\exists \lim\limits_{n\to\infty}\dfrac{x_{n+1}-x_n}{y_{n+1}-y_n}$ -- конечный или бесконечный
+	\end{enumerate}
+	$\Rightarrow \exists \lim\limits \dfrac{x_n}{y_n}=\lim \dfrac{x_{n+1}-x_n}{y_{n+1}-y_n}$
+\end{Th}
+
+\begin{proof}
+	Пусть $\dfrac{x_{n+1}-x_n}{y_{n+1}-y_n} \to a$
+	
+	$\forall \varepsilon >0:\exists N:\forall n > N\quad |\dfrac{x_{n+1}x_n}{y_{n+1}-y_n}-a|<\dfrac{\varepsilon}{2}$
+	
+	$$a-\frac{\varepsilon}{2}<\dfrac{x_{n+1}x_n}{y_{n+1}-y_n}<a+\frac{\varepsilon}{2}\quad \forall n>N$$
+	
+	\begin{Lm}
+		Пусть есть набор $\frac{p_k}{q_k}, k = \overline{1, n}$. Тогда $\forall k \quad a < \dfrac{p_k}{q_k}<b \Rightarrow  a<\dfrac{\sum\limits_{k=1}^m p_k}{\sum_{k=1}^m q_k}<b$
+	\end{Lm}
+	
+	$a-\frac{\varepsilon}{2}<\dfrac{(x_n-x_{n-1})+(x_{n-1}-x_{n-2})+\dots + (x_{N+1}-x_N)}{(y_n-y_{n-1})+(y_{n-1}-y_{n-2})+\dots + (y_{N+1}-y_N)} < a + \frac{\varepsilon}{2}$
+	
+	$|\frac{x_n-x_N}{y_n-y_N}-a|<\frac{\varepsilon}{2}\quad \forall n > N$
+	
+	Легко видеть:
+	
+	$|\frac{x_n}{y_n}-a|=|\frac{x_N-ay_N}{y_n}+(1- \frac{y_N}{y_n}) (\frac{x_n-x_N}{y_n-y_N} - a)|\leqslant |\frac{x_N-ay_N}{y_n}| +(a-\frac{y_N}{y_n}) |\frac{x_n-x_N}{y_n-y_N}-a| \leqslant \frac{\varepsilon}{2}+1\cdot \frac{\varepsilon}{2}$, где $h>max\{N, N_1\}$
+	
+	$|\frac{x_N-ay_n}{y_n}|\to $	
+	
+	$y_n\uparrow\quad y_n>y_N\quad 0<\frac{y_N}{y_n}<1\quad 0<(1-\frac{y_N}{y_n})<1$
+\end{proof}
+.
+
++
+
+.
+
+.
+
+.
+
+.
+
+ДЗ) 39, 40, Случай 2, 54(а, в, г), $59^*$ , 355.1(a-л) прошлый листочек
+$\lim_{n \to \infty}\frac{n^m}{a^n} = 0\qquad n^m \prec a^n$
+
+$m\in \mathds{N}$
+
+$a>1$
+
+$59^*$
+
+
+
+\end{document}

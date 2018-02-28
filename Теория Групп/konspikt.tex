@@ -1,0 +1,348 @@
+\documentclass[11pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[OT1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{mathrsfs, dsfont} % специальные шрифты, по типу \mathscr или \dsfont
+\usepackage{comment} %для многострочных комментариев
+\usepackage{xcolor} %для гиперссылок в тексте и их цвета
+\usepackage{hyperref}
+\author{Коченюк Анатолий}
+\title{Конспект по теории групп}
+\newtheorem{Def}{Определение}[chapter]
+\newtheorem{Th}{Теорема}[chapter]
+\newtheorem{Lm}{Лемма}[chapter]
+\newtheorem{Pm}{Задача}[chapter]
+\begin{document}
+\maketitle
+Борис Лаевский -- преподователь
+
+\section{Перестановка}
+конечное множество $N = \{1, 2, ..., n\}$
+
+\begin{Def}
+Перестановкой будем называть биективную функцию 
+$
+\alpha: N \to N
+$
+$$
+\alpha = 
+\begin{pmatrix}
+1 & 2 &\hdots& n\\
+\alpha(1) & \alpha(2)& \hdots & \alpha(n)
+\
+\end{pmatrix}
+$$
+\end{Def}
+
+\begin{Def}
+Тождественной перстановкой будем обозначать перестановку, оставляющюю все элементы на своих местах
+\end{Def} 
+
+Рассмотрим композицию двух перестановок 
+
+$$
+a = 
+\begin{pmatrix}
+1 & 2 & 3 & 4\\
+3 & 2 & 1 & 4
+\end{pmatrix}
+$$
+$$
+b = 
+\begin{pmatrix}
+1 & 2 & 3 & 4\\
+1 & 3 & 2 & 4
+\end{pmatrix}
+$$
+
+$$
+ab = a(b(X))
+\begin{pmatrix}
+1 & 2 & 3 & 4\\
+1 & 3 & 2 & 4\\
+3 & 1 & 2 & 4\\
+\end{pmatrix}
+$$
+
+\begin{Def}
+$S_n $ --- множество всех перестановок множества из n элементов
+\end{Def}
+множество перестановок --- группа Если она обладает следущими свойствами:
+\begin{enumerate}
+	\item $\forall a, b, c \in S_n \quad (ab)c = a(bc)$
+	\item $\forall a \in S_n \quad ea = ae = a$
+	\item $\forall a \in S_n \quad \exists a^{-1} \in S_n: aa^{-1} = a^{-1}a = e$
+\end{enumerate}
+
+\begin{Def}
+$$
+a =
+\begin{pmatrix}
+1 & 2 & 3 & \hdots & n\\
+\alpha(1) & \alpha(2) & \alpha(3) & \hdots & \alpha(n)
+\end{pmatrix}
+$$
+
+Будем называть перстановку а k-циклом, если:
+\begin{enumerate}
+	\item $a(i) = i+1 \quad i = \overline{1, k}$
+	\item $a(k) = 1$ 
+\end{enumerate}
+\end{Def}
+
+Пример:
+$$
+a =
+\begin{pmatrix}
+1 & 2 & 3 & 4\\
+2 & 3 & 4 & 1
+\end{pmatrix}
+$$
+
+$$
+a = (2, 3, 4, 1)
+$$
+
+\begin{Def}
+Транспозиция --- цикл длины 2
+\end{Def}
+
+\begin{Pm}
+Сколко различных 57-циклов в $S_{57}$?
+
+Ответ : $56!$
+
+Решение
+(n) -- количество
+
+$$
+\begin{pmatrix}
+1& 2 & 3 & \hdots & 56 & 57\\
+(56) & (55) & (54)& \hdots & (1) & (1) 
+\end{pmatrix}
+$$
+
+Для первого нельзя поставить 1 $\Rightarrow$ осталось 56
+Для второго нельзя поставить прошлый элемент и 2-ой
+\end{Pm}
+
+\begin{Pm}
+Доказать, что любые два независимых цикла коммутируют (коммутативны относительно умножения) 
+\end{Pm}
+\begin{proof}
+
+\end{proof}
+ДЗ:
+\begin{itemize}
+	\item $S_5 $ количество циклов и транспозиций
+	\item При каких условиях произведение двух транспозиций является циклом 
+	\item[*] При каких условиях произведение двух циклов является циклом
+\end{itemize}
+
+\begin{enumerate}
+	\item $S_5$
+	
+	Транспозиций -- ((5), (4)) -- 5*4/2 = 10
+	
+	3-циклов -- $C_5^3*2 = 24$
+	
+	4-циклов -- $C_5^4*3! = 5$ 
+	
+	5-циклов -- $C_5^5*4! = 24$
+	
+	Всего -- 10+24+5+4 ()
+	
+	65 -- мало
+	\item a, b -- транспозиции ab -- цикл, если  они зависимы, т.е. изменяют один и тот же элемент в множестве.
+	\item a, b -- циклы ab -- цикл, когда они зависимы ---||---
+\end{enumerate}
+
+$C_n^k = \dfrac{n!}{k!(n-k)!}$ количество выбрать из n элементов группы по k элементов, не обращая внимания на порядок
+
+\begin{Th}
+	Любая перестановка представима в виде произведения (n-1) транспозиции
+\end{Th}
+
+\begin{proof}
+	д/з
+\end{proof}
+
+$S_1 \quad 
+\begin{pmatrix}
+	i_1 & i_2 & i_3 & \hdots & i_n\\
+	j_1 & j_2 & j_3 & \hdots & j_n\\
+\end{pmatrix}
+$. (k, l) -- беспорядок, если $i_k< i_l$ и $j_k> j_l$
+
+Перестановка чётная, если в каноническом виде (числа сверху расположены по порядку) количесвто беспорядков чётное.
+
+Также перестановка чётная, если в не каноническом виде сумма количеств беспорядков сверху и снизу чётное
+\begin{Th}
+Докажем эквивалентность этих определений
+\end{Th}
+
+\begin{proof}
+.\\
+	Для доказательства введём ещё одно определение, которое эквивалентно и тому и другому.
+	
+	перестановка $b$ -- чётная, если количество пар чисел $(k, l)$ таких, что $(i_k>i_l)\&(j_k<j_l)$ 
+	
+	1 и 3 эквивалентны:
+
+	применим 3 к каноническому виду. тогда мы получим, что считаем то же самое
+	
+	2 и 3 эквивалентны:
+	
+	фиксируем $k, l \in \mathds{N}$  не умаляя общности, скажем, что $k<l$
+	
+	\begin{enumerate}
+		\item $(i_k<i_l) \& (j_k>j_l)$ тогда эта пара даёт +1 к количеству беспорядков по 3-му определению. А по 2-му она не добавляет ни одной к верхней строчке и одну к нижней. Таким образом тоже +1
+		
+		Случай с обратными знаками аналогичен, просто беспорядок добавляется к верхней строчке, а не к нижней
+		\item $(i_k<i_l) \& (j_k<j_l)$аналогично
+	\end{enumerate}	 
+\end{proof}
+
+\begin{itemize}
+	\item Доказать, что при умножении на транспозицию справа или слева чётность меняется
+	\begin{proof}
+		$a =
+	\begin{pmatrix}
+		1 & 2 & \hdots & i & \hdots & j & \hdots &n\\
+		a_1 & a _2 & & a_i & & a_j & & a_n
+	\end{pmatrix}$
+		
+	$t = (i, j)$
+	
+	$at =
+	\begin{pmatrix}
+		1 & 2 & \hdots & i & \hdots & j & \hdots &n\\
+		a_1 & a _2 & & a_j & & a_i & & a_n
+	\end{pmatrix}$
+	
+	Если между $i$ и $j$  $k$ перестановок, то количество беспорядков, возникающих при переставлении $a_i$ и $a_j$ = 2$k$-1. это число нечётное $\Rightarrow$ чётность количесва беспорядков меняется.
+	\end{proof}
+	\item имеется 2 перестановки a, b. как определяется чётность через чётность a и чётность b
+	\begin{proof}
+		$a = k$ транспозиций
+		
+		$b = l$ транспозиций
+		
+		$ab = k+l$ транспозиций
+	\end{proof}
+\end{itemize}
+
+в $S_n$ равное количество чётных и нечётных
+ДЗ:
+\begin{Th}
+	$(ab)^{-1}= b^{-1}a^{-1},~a, b \in S_n$
+	\begin{Def}[возведение перстановок в степень]
+		$a \in S_n$
+		\begin{enumerate}
+			\item $a^0 = e = id$
+			\item $a^{k+1} = a^ka$
+		\end{enumerate}
+	\end{Def}
+	
+	Доказать, что $a^{-k} = (a^{-1})^{k} \quad \equiv a^{-k}$ -- обратное к $a^k$
+\end{Th}
+
+\begin{proof}
+	$a^{-k}$ -- обратное к $k$. Нужно доказать, что $a^{-k}=(a^{-1})^k$
+	
+	$a^k\cdot(a^{-1})^k=e$?
+	
+	$$a^k \cdot (a^{-1})^k= a \cdot \hdots\cdot a\cdot a\cdot a^{-1}\cdot a^{-1}\cdot\hdots\cdot a=a^k\cdot(a^{-1})^k=$$
+	$$= a\cdot\hdots\cdot a\cdot e\cdot a^{-1}\cdot\hdots\cdot a^{-1}=\hdots a\cdot a\cdot a^{-1}a^{-1}=a\cdot e\cdot a^{-1}=a\cdot a^{-1}=e$$
+\end{proof}
+
+
+Найти все $a \in S_n$, что $\forall b \in S_n$
+\begin{enumerate}
+	\item $ba=b$
+	
+	$b^{-1}ba = b^{-1}b$
+	
+	$a=e=id$
+	\item $ba = ab$
+	\item $ba = ab^{-1}$
+\end{enumerate}
+
+
+
+Свойства стееней:
+\begin{enumerate}
+	\item $a^{k+l}=a^k*a^l$
+	\item $a^{kl}=(a^k)^l$
+	\item Если $ab = ba$, то $ab^k = a^kb^k$ очевидно
+\end{enumerate}
+
+$\forall (k, m) \& \forall a \quad a(k, m)=(k, m)a\Rightarrow a = e$\
+
+Мы знаем, что любая перстановка представима в виде произведения конечного числа циклов. И, возведя каждый из них в степень равную их длинне получим $id=e$. Мы можем возвести всю перстановку в степень равную НОК длин её составляющих, таким образом каждый цикл станет равен $id=e$, а их произведение будет тоже $id=e$
+
+наименьшее такое $k$ будем называть порядком перстановки 
+
+\begin{Th}
+	$S_n \quad a \in S_n \quad a = c_1\hdots c_i$
+	
+	Тогда порядок $a$равен НОК$|c_1|\dots|c_n|$, где $|c|$-- порядок $c$ 
+\end{Th}
+
+\begin{proof}
+	$k = $ НОК$(|c_1|\hdots|c_i|)$
+	
+	$k\vdots |c_j|\quad \forall j = \overline{1, i}$
+	
+	$c_j^k = e$
+	
+	$a = c_1\hdots c_i$
+	
+	$a^k = (c_1\hdots c_i)^k=c_1^k\hdots c_i^k=e\hdots e = e$
+	
+	Попробуем взять $l<k$такое, что 
+	$l\not\vdots |c_j|\quad c_j^l\neq e\quad a^e \neq e$
+\end{proof}
+
+Пусть $k$ -- порядок $a$, тогда $a^n=e\Longleftrightarrow n \vdots k$
+
+\section{Группы}
+$\cdot : MxM \to M$ -- бинарная операция
+
+$(G, \cdot)$ -- группа если:
+\begin{enumerate}
+	\item $a(bc) = (ab)c$
+	\item $\exists c \in G: \forall a \in G \quad ac = ca = a$
+	\item $\forall a \in G \quad \exists a^{-1}\in G: aa^{-1}= a^{-1}a = e$
+\end{enumerate}
+
+$(S_n, \cdot)$ -- группа
+
+Количество элементов в $G = |G| = $ порядок $G$
+\begin{enumerate}
+	\item $(\mathds{Z}, +)$ да
+	\item $(\mathds{Z}, -)$ нет
+	\item $(\mathds{N}, *)$ нет
+	\item Множество чётных чисел относительно сложения 
+	\item Множество нечётных чисел относительно сложения
+	\item $(f:X\to X, \cdot)$
+	\item $(B(A), \cup)$
+	\item $(B(A), \cap)$
+	\item $(B(A), \backslash)$
+	\item $(B(A), \triangle)$
+\end{enumerate}
+
+$f: G\to H$ -- изоморфизм, если :
+\begin{enumerate}
+	\item $f$ -- биекция
+	\item $\forall x, y \in G\quad f(x\cdot y) = f(x)\cdot g(x)$
+\end{enumerate}
+
+ и трёх ээлементов
+Дз
+попарные неизоморфные группы из одного и двух элементов (3 и 4-х тоже)
+\end{document}

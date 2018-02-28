@@ -1,0 +1,23 @@
+word -- translate -- synonyms
+
+1)bald -- лысый -- hailess, baldheaded, bald as a coot
+2)blonde -- блондин -- fair, light, brigth
+3)curly -- кудрявый -- crispy, crisp,fleecy
+4)tall -- высокий -- big, elevated, lengthy
+5)well-built -- с хорошей формой -- strong, well-made, solid
+6)arrogant -- высокомерный -- snooty, haughty
+7)bossy -- влстный -- overbearing
+8)reliable -- надёжный -- secure, safe, credible
+9)selfish -- эгоистичый -- egoistic, hoggish, self-loving
+10)shy -- скромный -- timid, fearful, vexatious
+11)elderly -- престарелый -- aged, in years, old-aged
+12)intelligent -- умный -- smart, clever, brainy
+13)outgoing -- исходящий -- doenhill, parting
+14)slim -- стройный -- slender, svelte
+15)difficult -- сложно -- hard, tight, tough
+16)attractive -- привлекательный -- lovable, appealing
+17)calm -- спокойный -- peaseful, quiet, serene
+18)lazy -- ленивый -- indolent, idle, sluggish
+19)patient -- терпеливый -- enduring, endurant
+20)nerbous -- нервный -- neural, nerve, nervy
+21)friendly -- дружелюный -- amiable, amicable  

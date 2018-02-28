@@ -1,0 +1,203 @@
+unit main;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+  StdCtrls, hangmangame;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    Panel3: TPanel;
+    ResignButton: TButton;
+    GameButton: TButton;
+    PaintBox1: TPaintBox;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    procedure FormCreate(Sender: TObject);
+    procedure GameButtonClick(Sender: TObject);
+    procedure PaintBox1Paint(Sender: TObject);
+    procedure ResignButtonClick(Sender: TObject);
+  private
+    { private declarations }
+    WordLabels:TList;
+    LetterButtons:TList;
+    theGame:Game;
+    procedure LetterClick(Sender:TObject);
+    procedure gameNewWord(Sender:TObject);
+    procedure gameSuccess(Sender:TObject);
+    procedure gameHang(Sender:TObject);
+    procedure gameError(Sender:TObject);
+    procedure gameLetter(Sender:TObject);
+    procedure lockLetters;
+  public
+    { public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm1 }
+
+procedure TForm1.FormCreate(Sender: TObject);
+var tmp:TButton; i:Integer;
+begin
+  theGame:=Game.Create;
+  theGame.onNewWord:=@gameNewWord;
+  theGame.onSuccess:=@gameSuccess;
+  theGame.onHang:=@gameHang;
+  theGame.onError:=@gameError;
+  theGame.onLetter:=@gameLetter;
+  LetterButtons:=TList.Create;
+  for i:=1 to Length(Alphabet) do begin
+    tmp:=TButton.Create(Form1);
+    tmp.Parent:=Panel2;
+    tmp.Top:=1;
+    tmp.Width:=24;
+    tmp.Left:=(i-1)*25;
+    tmp.Caption:=Alphabet[i];
+    tmp.OnClick:=@LetterClick;
+    LetterButtons.Add(tmp);
+  end;
+  Width:=Length(Alphabet) * 25 + 8;
+  WordLabels:=TList.Create;
+  Dictionary:=TStringList.Create;
+  Dictionary.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'dictionary.txt');
+  randomize;
+end;
+
+procedure TForm1.GameButtonClick(Sender: TObject);
+begin
+  theGame.new;
+end;
+
+procedure TForm1.PaintBox1Paint(Sender: TObject);
+var i, HALFW:Integer;
+begin
+  HALFW:=PaintBox1.Width div 2;
+  PaintBox1.Canvas.Clear;
+  for i:=1 to theGame.getErrorCount do
+  case i of
+  1: begin
+       PaintBox1.Canvas.MoveTo(HALFW - 30, 10);
+       PaintBox1.Canvas.LineTo(HALFW - 30, 120);
+     end;
+  2: begin
+       PaintBox1.Canvas.MoveTo(HALFW - 30, 16);
+       PaintBox1.Canvas.LineTo(HALFW + 30, 16);
+     end;
+  3: begin
+       PaintBox1.Canvas.MoveTo(HALFW, 16);
+       PaintBox1.Canvas.LineTo(HALFW, 24);
+     end;
+  4: begin
+       PaintBox1.Canvas.Ellipse(HALFW - 8, 24, HALFW + 8, 40);
+     end;
+  5: begin
+       PaintBox1.Canvas.MoveTo(HALFW, 40);
+       PaintBox1.Canvas.LineTo(HALFW, 90);
+     end;
+  6: begin
+       PaintBox1.Canvas.MoveTo(HALFW, 60);
+       PaintBox1.Canvas.LineTo(HALFW - 20, 60);
+     end;
+  7: begin
+       PaintBox1.Canvas.MoveTo(HALFW, 60);
+       PaintBox1.Canvas.LineTo(HALFW + 20, 60);
+     end;
+  8: begin
+       PaintBox1.Canvas.MoveTo(HALFW, 90);
+       PaintBox1.Canvas.LineTo(HALFW - 20, 110);
+     end;
+  9: begin
+       PaintBox1.Canvas.MoveTo(HALFW, 90);
+       PaintBox1.Canvas.LineTo(HALFW + 20, 110);
+     end
+  end;
+end;
+
+procedure TForm1.ResignButtonClick(Sender: TObject);
+var s:String; i:Integer;
+begin
+  lockLetters;
+  s:=theGame.getWord;
+  for i:=1 to Length(s) do begin
+    TLabel(WordLabels[i - 1]).Caption:=s[i];
+  end;
+end;
+
+procedure TForm1.LetterClick(Sender: TObject);
+begin
+  TButton(Sender).Enabled:=false;
+  theGame.tryLetter(TButton(Sender).Caption[1]);
+end;
+
+procedure TForm1.gameNewWord(Sender: TObject);
+var i, n:Integer; tmp:TLabel;
+begin
+  PaintBox1.Canvas.Clear;
+  for i:=0 to LetterButtons.Count - 1 do TButton(LetterButtons[i]).Enabled:=true;
+  if (WordLabels.Count > 0) then begin
+    for i:=WordLabels.Count - 1 downto 0 do TLabel(WordLabels[i]).Free;
+    WordLabels.Clear;
+  end;
+  n:=Length(theGame.getDisplayWord);
+  for i:=1 to n do begin
+    tmp:=TLabel.Create(Form1);
+    tmp.Parent:=Panel3;
+    tmp.Top:=8;
+    tmp.AutoSize:=false;
+    tmp.Width:=24;
+    tmp.Height:=24;
+    tmp.Left:=(i-1)*28 + 4;
+    tmp.Color:=clWhite;
+    tmp.Alignment:=taCenter;
+    tmp.Layout:=tlCenter;
+    tmp.Caption:='_';
+    WordLabels.add(tmp);
+  end;
+end;
+
+procedure TForm1.gameSuccess(Sender: TObject);
+begin
+  ShowMessage('Congratulations!');
+  lockLetters;
+end;
+
+procedure TForm1.gameHang(Sender: TObject);
+begin
+  ShowMessage('Game over!');
+  lockLetters;
+end;
+
+procedure TForm1.gameError(Sender: TObject);
+begin
+  PaintBox1.Repaint;
+end;
+
+procedure TForm1.gameLetter(Sender: TObject);
+var s:String; i:Integer;
+begin
+  s:=theGame.getDisplayWord;
+  for i:=1 to Length(s) do begin
+    TLabel(WordLabels[i - 1]).Caption:=s[i];
+  end;
+end;
+
+procedure TForm1.lockLetters;
+var i:Integer;
+begin
+  for i:=0 to LetterButtons.Count - 1 do TButton(LetterButtons[i]).Enabled:=false;
+end;
+
+end.
+

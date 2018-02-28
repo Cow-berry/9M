@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/bin/fpc" Date="1488055028"/>
+  <Params Value=" -MObjFPC -Scghi -O1 -g -gl -l -vewnhibq -Fi/home/tolik/Документы/9M/Прога/TuringMashine/lib/i386-linux -Fl/opt/gnome/lib -Fu/usr/share/lazarus/1.6.4/lcl/units/i386-linux/gtk2 -Fu/usr/share/lazarus/1.6.4/lcl/units/i386-linux -Fu/usr/share/lazarus/1.6.4/components/lazutils/lib/i386-linux -Fu/usr/share/lazarus/1.6.4/packager/units/i386-linux -Fu/home/tolik/Документы/9M/Прога/TuringMashine/ -FU/home/tolik/Документы/9M/Прога/TuringMashine/lib/i386-linux/ -dLCL -dLCLgtk2 project1.lpr"/>
+</CONFIG>

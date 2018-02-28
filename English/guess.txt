@@ -1,0 +1,17 @@
+It'll be difficult.
+he has long fair straight hair, well-built.
+he is- not very tall.
+he hasn't got a beard.
+he is good-looking and fair.
+he is clever and nice.
+
+answer -- Lfybbk Fktrcttdbx
+
+
+
+it looks horrible and preety at the same time. it's big and it places in this room. it's, i think, doesn't smell at all and doesn't make any sounds.
+
+answer -- flcrbq g`ctkm yfdth[e  
+
+sudo add-apt-repository ppa:mozillateam/firefox-next
+sudo apt update && sudo apt upgrade

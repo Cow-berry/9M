@@ -1,0 +1,55 @@
+unit main;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls, salutModel;
+
+type
+
+  { TForm1 }
+
+  TForm1 = class(TForm)
+    Button1: TButton;
+    ComboBox1: TComboBox;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+
+{$R *.lfm}
+
+{ TForm1 }
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  ComboBox1.Items.AddObject('Rus', RusSalutation.Create);
+  ComboBox1.Items.AddObject('Eng', EngSalutation.Create);
+  ComboBox1.Items.AddObject('It', ItSalutation.Create);
+  ComboBox1.Items.AddObject('Esp', EspSalutation.Create);
+  ComboBox1.Items.AddObject('Port', PortSalutation.Create);
+  //ComboBox1.Items.AddObject('Button', TButton.Create(Form1));
+  // -- комментарии. Если добавить кнопку, то выадёт ошибку.
+
+  Button1.OnClick := @Button1Click;
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  if ComboBox1.ItemIndex <> -1 then
+     Form1.Caption := Salutation(ComboBox1.Items.Objects[ComboBox1.ItemIndex]).say;
+end;
+
+end.
+

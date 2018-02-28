@@ -1,0 +1,67 @@
+object Form1: TForm1
+  Left = 245
+  Height = 311
+  Top = 137
+  Width = 564
+  Caption = 'Form1'
+  ClientHeight = 311
+  ClientWidth = 564
+  OnCreate = FormCreate
+  LCLVersion = '1.4.0.4'
+  object Panel1: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 564
+    Align = alTop
+    BorderStyle = bsSingle
+    ClientHeight = 46
+    ClientWidth = 560
+    TabOrder = 0
+    object GameButton: TButton
+      Left = 1
+      Height = 44
+      Top = 1
+      Width = 75
+      Align = alLeft
+      Caption = 'ИГРА'
+      OnClick = GameButtonClick
+      TabOrder = 0
+    end
+    object ResignButton: TButton
+      Left = 76
+      Height = 44
+      Top = 1
+      Width = 75
+      Align = alLeft
+      Caption = 'СЛОВО'
+      OnClick = ResignButtonClick
+      TabOrder = 1
+    end
+    object Panel3: TPanel
+      Left = 151
+      Height = 44
+      Top = 1
+      Width = 408
+      Align = alClient
+      TabOrder = 2
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Height = 50
+    Top = 261
+    Width = 564
+    Align = alBottom
+    BorderStyle = bsSingle
+    TabOrder = 1
+  end
+  object PaintBox1: TPaintBox
+    Left = 0
+    Height = 211
+    Top = 50
+    Width = 564
+    Align = alClient
+    OnPaint = PaintBox1Paint
+  end
+end
